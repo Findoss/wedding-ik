@@ -211,13 +211,17 @@ body.no-scroll::before {
 }
 
 .invitation-card .hero-subtitle,
-.invitation-card .invitation-text {
+.invitation-card {
   position: relative;
   z-index: 2;
   font-size: var(--text-lg);
   font-weight: bold;
   color: var(--text-main);
   margin-bottom: var(--space-sm);
+}
+
+.invitation-text {
+  font-weight: 400;
 }
 
 /* Подложка для скрытия контента карточки до открытия */
@@ -297,7 +301,7 @@ body.no-scroll::before {
   color: var(--text-muted);
   text-align: center;
   padding: var(--space-sm);
-  padding-bottom: 12vh; /* Отступ от нижнего края (печати) */
+  padding-bottom: 30vh; /* Отступ от нижнего края (печати) */
   letter-spacing: 1px;
 }
 
@@ -450,8 +454,8 @@ body.no-scroll::before {
 
 .wedding-ring {
   position: absolute;
-  top: -65%;
-  left: -70%;
+  top: -50%;
+  left: -30%;
   transform: translate(-50%, -50%);
   transform-origin: center 60%; /* Shift rotation center lower as requested */
   width: 80px;
@@ -580,7 +584,7 @@ body.no-scroll::before {
 
 .map {
   width: 100%;
-  max-width: 600px;
+  max-width: 1000px;
   margin: var(--space-lg) auto 0 auto;
   border-radius: 15px;
   overflow: hidden;
@@ -589,7 +593,6 @@ body.no-scroll::before {
 }
 
 .map iframe {
-  width: 100% !important;
   height: 400px;
   border: none;
   display: block;
@@ -809,9 +812,12 @@ body.no-scroll::before {
     width: 200px;
     height: 200px;
   }
-  .flap-text-top {
-    padding-bottom: 30vh;
+
+  .wedding-ring {
+    top: -65%;
+    left: -70%;
   }
+
   .flap-text-bottom {
     padding-top: 35vh;
   }
@@ -863,6 +869,23 @@ body.no-scroll::before {
     width: 100%;
     max-width: 240px;
   }
+
+  .map iframe {
+    width: 100% !important;
+  }
+
+  .toast-notification {
+    top: auto;
+    bottom: 20px;
+    right: 20px;
+    left: 20px;
+    max-width: none;
+    transform: translateY(100px);
+  }
+
+  .toast-notification.show {
+    transform: translateY(0);
+  }
 }
 
 /* Уведомления (Toasts) */
@@ -897,18 +920,4 @@ body.no-scroll::before {
 .toast-error {
   background: #e74c3c;
   border-left: 5px solid #c0392b;
-}
-
-@media (max-width: 768px) {
-  .toast-notification {
-    top: auto;
-    bottom: 20px;
-    right: 20px;
-    left: 20px;
-    max-width: none;
-    transform: translateY(100px);
-  }
-  .toast-notification.show {
-    transform: translateY(0);
-  }
 }

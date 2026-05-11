@@ -231,7 +231,7 @@ document.addEventListener("DOMContentLoaded", () => {
         // prod https://gistoyidosk.beget.app/webhook/d7617c0e-1fff-4668-978f-474d7ca67882
         // test https://gistoyidosk.beget.app/webhook-test/d7617c0e-1fff-4668-978f-474d7ca67882
         const response = await fetch(
-          "https://gistoyidosk.beget.app/webhook-test/d7617c0e-1fff-4668-978f-474d7ca67882",
+          "https://gistoyidosk.beget.app/webhook/d7617c0e-1fff-4668-978f-474d7ca67882",
           {
             method: "POST",
             headers: {
