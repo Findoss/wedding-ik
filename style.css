@@ -7,7 +7,7 @@
 
 :root {
   /* Цветовая палитра (Theme Colors) */
-  --bg-main: #d7c9b8; /* Светло-бежевый (фон) */
+  --bg-main: #ffffff; /* Светло-бежевый (фон) */
   --bg-soft: #b2967d; /* Приглушенный золотисто-бежевый */
 
   --text-main: #4a342a; /* Темный кофейный (основной текст) */
@@ -468,10 +468,10 @@ body.no-scroll::before {
 /* Секция 3: Обратный отсчет */
 .countdown-container {
   display: flex;
-  gap: var(--space-xl);
+  gap: var(--space-sm);
   justify-content: center;
   align-items: center;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
 }
 
 .countdown-item {
@@ -479,9 +479,9 @@ body.no-scroll::before {
   flex-direction: column;
   align-items: center;
   background: var(--overlay-bg);
-  padding: var(--space-md);
+  padding: var(--space-xs);
   border-radius: 15px;
-  min-width: 120px;
+  min-width: 80px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
   border: 2px solid var(--white);
 }
@@ -528,19 +528,15 @@ body.no-scroll::before {
 }
 .item-2 {
   grid-column: span 2;
-  grid-row: span 2; /* Vertical */
+  grid-row: span 3; /* Vertical */
 }
 .item-3 {
   grid-column: span 2;
-  grid-row: span 1;
+  grid-row: span 3;
 }
+
 .item-4 {
-  grid-column: span 2;
-  grid-row: span 1;
-}
-.item-5 {
-  grid-column: span 4;
-  grid-row: span 2;
+  display: none;
 }
 
 @media (max-width: 768px) {
@@ -580,6 +576,14 @@ body.no-scroll::before {
 
 .location-img:hover {
   transform: scale(1.02);
+}
+
+.location-info {
+  text-align: center;
+  font-size: var(--text-lg);
+  margin-top: var(--space-md);
+  color: var(--text-heading);
+  line-height: 1.4;
 }
 
 .map {
@@ -802,6 +806,44 @@ body.no-scroll::before {
 }
 
 /* Адаптивность */
+/* Секция 9: Финал */
+.final-section {
+  background-image: none !important;
+  background-color: var(--text-dark) !important;
+  color: var(--bg-main);
+  padding: 100px var(--space-lg);
+  position: relative;
+  overflow: visible;
+  margin-top: 60px;
+}
+
+.final-section .section-overlay {
+  display: none;
+}
+
+.final-section::before {
+  content: "";
+  position: absolute;
+  top: -59px; /* Стык в стык */
+  left: 0;
+  width: 100%;
+  height: 60px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1000 100' preserveAspectRatio='none'%3E%3Cpath d='M0 100 Q 500 0, 1000 100 V 100 Z' fill='%234a342a' /%3E%3C/svg%3E");
+  background-size: 100% 60px;
+  background-repeat: no-repeat;
+}
+
+.final-text {
+  font-family: var(--font-heading);
+  font-size: 5.5rem;
+  line-height: 0.8;
+  max-width: 950px;
+  margin: 0 auto;
+  text-align: center;
+  color: var(--bg-main);
+  z-index: 2;
+}
+
 @media (max-width: 768px) {
   :root {
     --text-xl: 3rem;
@@ -844,6 +886,24 @@ body.no-scroll::before {
     border-width: 2px;
   }
 
+  .item-1 {
+    grid-column: span 4;
+    grid-row: span 2;
+  }
+  .item-2 {
+    grid-column: span 2;
+    grid-row: span 2;
+  }
+  .item-3 {
+    grid-column: span 2;
+    grid-row: span 1;
+  }
+  .item-4 {
+    grid-column: span 2;
+    grid-row: span 1;
+    display: block;
+  }
+
   .timeline-content {
     padding: 0;
   }
@@ -859,6 +919,12 @@ body.no-scroll::before {
   .event-desc {
     font-size: 0.8rem;
     max-width: 100%;
+  }
+
+  .final-text {
+    font-size: 3rem;
+    line-height: 0.8;
+    padding: 0 var(--space-sm);
   }
 
   .timeline-point {
