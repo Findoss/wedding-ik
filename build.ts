@@ -75,7 +75,9 @@ async function build() {
     // Копирование библиотек и аудио
     const copyTasks = [
       ...files.filter(f => f.endsWith(".min.js")),
-      ...files.filter(f => f.endsWith(".mp3"))
+      ...files.filter(f => f.endsWith(".mp3")),
+      ...files.filter(f => f.endsWith(".otf")),
+      ...files.filter(f => f.endsWith(".ttf"))
     ];
     for (const file of copyTasks) {
       await fs.copyFile(file, path.join(OUT_DIR, file));

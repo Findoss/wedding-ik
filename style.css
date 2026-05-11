@@ -1,29 +1,36 @@
-/* style.css */
+@font-face {
+  font-family: "AlexandraScript";
+  src: url("alexandrascript.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
 :root {
   /* Цветовая палитра (Theme Colors) */
-  --bg-main: #ebebeb;
+  --bg-main: #d7c9b8; /* Светло-бежевый (фон) */
+  --bg-soft: #b2967d; /* Приглушенный золотисто-бежевый */
 
-  --text-main: #883600;
-  --text-muted: #883600;
-  --text-heading: #883600;
-  --text-dark: #883600;
+  --text-main: #4a342a; /* Темный кофейный (основной текст) */
+  --text-muted: #7d5a44; /* Терракотово-коричневый (второстепенный) */
+  --text-heading: #4a342a; /* Темный кофейный (заголовки) */
+  --text-dark: #4a342a;
 
-  --accent-color: #8f3400;
-  --accent-hover: #b45309;
+  --accent-color: #7d5a44; /* Акцентный коричневый */
+  --accent-hover: #4a342a; /* Темный акцент при наведении */
 
-  --error-bg: #dc2626;
-  --error-border: #991b1b;
-  --error-accent: #fca5a5;
+  --white: #ffffff;
+  --overlay-bg: rgba(255, 255, 255, 0.7);
 
   /* Шрифты (Typography) */
   --font-primary: "Spectral", "Georgia", serif;
+  --font-heading: "AlexandraScript"; /* рукописный шрифт */
   --font-sans: "Inter", sans-serif;
 
   /* Размеры текста (Text Sizes) */
   --text-sm: 1rem; /* 16px - Base text, descriptions, mobile */
   --text-md: 1.25rem; /* 20px - Subtitles, cards, standard text */
-  --text-lg: 2.5rem; /* 40px - Standard for all section headers and titles */
-  --text-xl: 4rem; /* 64px - Main hero title only */
+  --text-lg: 2.5rem; /* Standard title size */
+  --text-xl: 4rem; /* Main hero title size */
 
   /* Отступы (Spacing) */
   --space-xs: 0.5rem;
@@ -80,9 +87,8 @@ body.no-scroll::before {
   align-items: center;
   padding: var(--space-lg) var(--space-2xl);
   text-align: center;
-  background-image: url("img/bg-section-gold.png");
-  background-repeat: repeat-y;
-  background-size: 100% auto;
+  background-image: url("img/bg.jpg");
+  background-size: cover;
   background-position: center 0px;
   overflow: hidden;
   justify-content: flex-start;
@@ -97,22 +103,25 @@ body.no-scroll::before {
   bottom: 0;
   background: linear-gradient(
     to right,
-    rgba(255, 255, 255, 0) 0%,
-    rgba(255, 255, 255, 0.7) 5%,
-    rgba(255, 255, 255, 0.7) 95%,
-    rgba(255, 255, 255, 0) 100%
+    transparent 0%,
+    var(--overlay-bg) 5%,
+    var(--overlay-bg) 95%,
+    transparent 100%
   );
   z-index: 1;
   pointer-events: none;
 }
 
 .section-title {
-  font-size: var(--text-lg);
+  font-family: var(--font-heading);
+  font-size: 5rem; /* Increased handwritten size */
+  font-weight: normal;
+  line-height: 0.8; /* Reduced line height for script font */
   margin-bottom: var(--space-sm);
   color: var(--accent-color);
-  text-transform: uppercase;
+  text-transform: none; /* Handwritten fonts look bad in all-caps */
   z-index: 2;
-  text-align: center; /* Keep titles centered or also left? Usually better centered or matching text. User said 'раздел текста', usually means the body. I will keep title centered for now but I can change if needed. */
+  text-align: center;
 }
 
 .content-box {
@@ -130,14 +139,16 @@ body.no-scroll::before {
   align-items: center;
   justify-content: center;
   background-color: var(--accent-color);
-  color: #fff;
+  color: var(--white);
   padding: var(--space-sm) var(--space-lg);
   border-radius: 30px;
   text-decoration: none;
-  font-family: var(--font-sans);
+  font-family: var(--font-primary); /* Changed to serif font from theme */
   font-weight: 700;
   font-size: var(--text-md);
   margin-top: var(--space-md);
+  border: none;
+  cursor: pointer;
   transition:
     background-color 0.3s,
     transform 0.3s;
@@ -189,8 +200,10 @@ body.no-scroll::before {
 .invitation-card .hero-title {
   position: relative;
   z-index: 2;
-  font-size: var(--text-xl);
-  font-weight: 700;
+  font-family: var(--font-heading);
+  font-size: 7rem; /* Increased handwritten size */
+  font-weight: normal;
+  line-height: 0.8;
   color: var(--accent-color);
   background: none;
   -webkit-text-fill-color: initial;
@@ -214,7 +227,7 @@ body.no-scroll::before {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: var(--bg-main); /* Под цвет фона страницы */
+  background-color: var(--white); /* Под цвет фона страницы */
   z-index: 1; /* Поверх карточки (0), но под створками (2, 3) */
 }
 
@@ -277,8 +290,10 @@ body.no-scroll::before {
 .flap-text-top {
   position: relative;
   z-index: 1;
-  font-size: var(--text-lg);
-  font-weight: 900;
+  font-size: 5rem;
+  font-family: var(--font-heading);
+  line-height: 0.8;
+  font-weight: normal;
   color: var(--text-muted);
   text-align: center;
   padding: var(--space-sm);
@@ -390,7 +405,10 @@ body.no-scroll::before {
 }
 
 .calendar-title {
-  font-size: var(--text-lg);
+  font-family: var(--font-heading);
+  font-size: 4rem; /* Increased handwritten size */
+  font-weight: normal;
+  line-height: 0.8;
   color: var(--accent-color);
   margin-bottom: var(--space-md);
   text-transform: capitalize;
@@ -432,11 +450,12 @@ body.no-scroll::before {
 
 .wedding-ring {
   position: absolute;
-  top: 50%;
-  left: 50%;
+  top: -65%;
+  left: -70%;
   transform: translate(-50%, -50%);
-  width: 60px;
-  height: 60px;
+  transform-origin: center 60%; /* Shift rotation center lower as requested */
+  width: 80px;
+  height: 80px;
   object-fit: contain;
   pointer-events: none;
   z-index: -1;
@@ -455,12 +474,76 @@ body.no-scroll::before {
   display: flex;
   flex-direction: column;
   align-items: center;
-  background: rgba(255, 255, 255, 0.7);
+  background: var(--overlay-bg);
   padding: var(--space-md);
   border-radius: 15px;
   min-width: 120px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
-  border: 2px solid #fff;
+  border: 2px solid var(--white);
+}
+
+/* Секция: Галерея */
+.gallery-section {
+  padding: var(--space-xl) var(--space-md);
+}
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-auto-rows: 250px;
+  gap: var(--space-sm);
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+  z-index: 2;
+}
+
+.gallery-item {
+  position: relative;
+  overflow: hidden;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  border: 1px solid var(--white);
+}
+
+.gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.5s ease;
+}
+
+.gallery-item:hover img {
+  transform: scale(1.05);
+}
+
+.item-1 {
+  grid-column: span 4;
+  grid-row: span 2; /* Horizontal */
+}
+.item-2 {
+  grid-column: span 2;
+  grid-row: span 2; /* Vertical */
+}
+.item-3 {
+  grid-column: span 2;
+  grid-row: span 1;
+}
+.item-4 {
+  grid-column: span 2;
+  grid-row: span 1;
+}
+.item-5 {
+  grid-column: span 4;
+  grid-row: span 2;
+}
+
+@media (max-width: 768px) {
+  .gallery-grid {
+    grid-template-columns: repeat(2, 1fr);
+    grid-auto-rows: 180px;
+  }
 }
 
 .countdown-value {
@@ -487,7 +570,7 @@ body.no-scroll::before {
   border-radius: 15px;
   margin-top: var(--space-lg);
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-  border: 4px solid #fff;
+  border: 4px solid var(--white);
   transition: transform 0.3s;
 }
 
@@ -502,7 +585,7 @@ body.no-scroll::before {
   border-radius: 15px;
   overflow: hidden;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-  border: 4px solid #fff;
+  border: 4px solid var(--white);
 }
 
 .map iframe {
@@ -562,7 +645,7 @@ body.no-scroll::before {
   height: 180px;
   border-radius: 50%;
   object-fit: cover;
-  border: 4px solid #fff;
+  border: 4px solid var(--white);
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
 }
 
@@ -581,14 +664,15 @@ body.no-scroll::before {
 
 .event-time {
   font-family: var(--font-primary);
-  font-weight: 700;
-  font-size: var(--text-lg); /* Standardized to match other section titles */
+  font-weight: 400;
+  font-size: 2rem; /* Clear size for primary font */
   color: var(--accent-color);
   margin-bottom: 2px;
 }
 
 .event-title {
   font-size: var(--text-lg);
+  font-weight: normal;
   color: var(--text-main);
   margin-bottom: var(--space-xs);
 }
@@ -637,13 +721,81 @@ body.no-scroll::before {
   font-size: var(--text-md);
   font-weight: 600;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-  border: 2px solid #fff;
+  border: 2px solid var(--white);
   transition: transform 0.3s;
   cursor: default;
 }
 
 .color-strip:hover {
   transform: scale(1.05);
+}
+
+/* Секция: Анкета гостя */
+.rsvp-form {
+  margin-top: var(--space-xl);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+  width: 100%;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+}
+
+.form-group label {
+  font-weight: 700;
+  color: var(--accent-color);
+  font-size: var(--text-md);
+  margin-bottom: 4px;
+}
+
+.form-group input[type="text"],
+.form-group textarea {
+  padding: var(--space-sm);
+  border: 1px solid var(--bg-soft);
+  border-radius: var(--radius-sm);
+  background: rgba(255, 255, 255, 0.5);
+  font-family: var(--font-primary);
+  font-size: var(--text-md);
+  color: var(--text-main);
+  transition:
+    border-color var(--transition-fast),
+    background-color var(--transition-fast);
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: var(--accent-color);
+  background: var(--white);
+}
+
+.radio-group,
+.checkbox-group {
+  display: flex;
+  gap: var(--space-lg);
+  flex-wrap: wrap;
+  margin-top: 4px;
+}
+
+.radio-label,
+.checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  font-size: var(--text-md);
+  color: var(--text-main);
+}
+
+.radio-label input,
+.checkbox-label input {
+  accent-color: var(--accent-color);
+  width: 1.4rem;
+  height: 1.4rem;
 }
 
 /* Адаптивность */
@@ -710,5 +862,53 @@ body.no-scroll::before {
   .color-strip {
     width: 100%;
     max-width: 240px;
+  }
+}
+
+/* Уведомления (Toasts) */
+.toast-notification {
+  position: fixed;
+  top: 30px;
+  right: 30px;
+  padding: 15px 30px;
+  border-radius: var(--radius-md);
+  color: var(--white);
+  font-family: var(--font-sans);
+  font-weight: 600;
+  z-index: 9999;
+  box-shadow: var(--shadow-md);
+  transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  opacity: 0;
+  transform: translateX(100px);
+  max-width: 320px;
+  text-align: center;
+}
+
+.toast-notification.show {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.toast-success {
+  background: #27ae60;
+  border-left: 5px solid #1e8449;
+}
+
+.toast-error {
+  background: #e74c3c;
+  border-left: 5px solid #c0392b;
+}
+
+@media (max-width: 768px) {
+  .toast-notification {
+    top: auto;
+    bottom: 20px;
+    right: 20px;
+    left: 20px;
+    max-width: none;
+    transform: translateY(100px);
+  }
+  .toast-notification.show {
+    transform: translateY(0);
   }
 }

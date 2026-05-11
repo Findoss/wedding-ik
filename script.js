@@ -146,10 +146,40 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // 2. Анимация появления элементов при скролле (используем Intersection Observer)
+  // 2. Анимация появления элементов при скролле (Intersection Observer)
   const observerOptions = {
-    threshold: 0.2, // Срабатывает, когда видно 20% элемента
+    threshold: 0.1,
+    rootMargin: "0px 0px -50px 0px", // Срабатывает чуть раньше
   };
+
+  const scrollObserver = new IntersectionObserver((entries, observer) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        anime({
+          targets: entry.target,
+          opacity: [0, 1],
+          translateY: [30, 0],
+          duration: 1000,
+          easing: "easeOutCubic",
+        });
+        observer.unobserve(entry.target);
+      }
+    });
+  }, observerOptions);
+
+  // Находим элементы для анимации во всех секциях, кроме приветственной
+  const revealElements = document.querySelectorAll(
+    ".section:not(.envelope-section) .content-box, " +
+      ".section:not(.envelope-section) .section-title, " +
+      ".gallery-item, " +
+      ".timeline-item, " +
+      ".rsvp-form .form-group",
+  );
+
+  revealElements.forEach((el) => {
+    el.style.opacity = "0"; // Исходное состояние
+    scrollObserver.observe(el);
+  });
 
   // Анимация покачивания кольца (непрерывная)
   anime({
@@ -160,31 +190,6 @@ document.addEventListener("DOMContentLoaded", () => {
     easing: "linear",
     duration: 2000,
   });
-
-  const scrollObserver = new IntersectionObserver((entries, observer) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        // Анимация для блока "О нас"
-        if (entry.target.classList.contains("content-box")) {
-          anime({
-            targets: entry.target,
-            opacity: [0, 1],
-            translateY: [100, 0],
-            duration: 1500,
-            easing: "easeOutQuart",
-          });
-          // Перестаем следить после того, как анимация проиграла
-          observer.unobserve(entry.target);
-        }
-      }
-    });
-  }, observerOptions);
-
-  // Скрываем элементы перед скроллом (чтобы они не мигали)
-  document.querySelector(".content-box").style.opacity = "0";
-
-  // Начинаем следить за элементами
-  scrollObserver.observe(document.querySelector(".content-box"));
 
   // 3. Параллакс эффект для фона секций
   window.addEventListener("scroll", () => {
@@ -204,7 +209,80 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Инициализация обратного отсчета
   initCountdown();
+
+  // Обработка формы RSVP
+  const rsvpForm = document.getElementById("rsvp-form");
+  if (rsvpForm) {
+    rsvpForm.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const submitBtn = rsvpForm.querySelector('button[type="submit"]');
+      const originalText = submitBtn.innerText;
+
+      submitBtn.innerText = "Отправка...";
+      submitBtn.disabled = true;
+
+      const formData = new FormData(rsvpForm);
+      const payload = Object.fromEntries(formData.entries());
+      payload.alcohol = formData.getAll("alcohol");
+
+      console.log(payload);
+
+      try {
+        // prod https://gistoyidosk.beget.app/webhook/d7617c0e-1fff-4668-978f-474d7ca67882
+        // test https://gistoyidosk.beget.app/webhook-test/d7617c0e-1fff-4668-978f-474d7ca67882
+        const response = await fetch(
+          "https://gistoyidosk.beget.app/webhook-test/d7617c0e-1fff-4668-978f-474d7ca67882",
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(payload),
+          },
+        );
+        if (response.ok) {
+          showNotification(
+            "Спасибо за ваш ответ! Мы получили вашу анкету.",
+            "success",
+          );
+          rsvpForm.reset();
+        } else {
+          throw new Error(`Сервер ответил кодом ${response.status}`);
+        }
+      } catch (error) {
+        console.error("Ошибка при отправке:", error);
+        showNotification(
+          `Не удалось отправить: ${error.message}. Попробуйте еще раз.`,
+          "error",
+        );
+      } finally {
+        submitBtn.innerText = originalText;
+        submitBtn.disabled = false;
+      }
+    });
+  }
 });
+
+// Функция для показа красивых уведомлений
+function showNotification(message, type = "success") {
+  // Удаляем старые уведомления, если они есть
+  const oldToast = document.querySelector(".toast-notification");
+  if (oldToast) oldToast.remove();
+
+  const toast = document.createElement("div");
+  toast.className = `toast-notification toast-${type}`;
+  toast.innerText = message;
+  document.body.appendChild(toast);
+
+  // Плавное появление
+  setTimeout(() => toast.classList.add("show"), 100);
+
+  // Исчезновение через 5 секунд
+  setTimeout(() => {
+    toast.classList.remove("show");
+    setTimeout(() => toast.remove(), 300);
+  }, 5000);
+}
 
 function initTimelineHeart() {
   const heart = document.getElementById("timeline-heart");
