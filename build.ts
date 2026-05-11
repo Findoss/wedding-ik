@@ -52,10 +52,24 @@ async function build() {
 
       if (!exists) {
         console.log(`🖼️ Обработка: ${imgName}`);
+        // Создаем WebP
         await sharp(srcPath)
           .webp({ quality: 80, effort: 6 })
           .toFile(webpPath);
-        await fs.copyFile(srcPath, origPath);
+        
+        // Оптимизируем оригинал
+        const ext = path.extname(imgName).toLowerCase();
+        if (ext === ".jpg" || ext === ".jpeg") {
+          await sharp(srcPath)
+            .jpeg({ quality: 80, progressive: true })
+            .toFile(origPath);
+        } else if (ext === ".png") {
+          await sharp(srcPath)
+            .png({ compressionLevel: 9 })
+            .toFile(origPath);
+        } else {
+          await fs.copyFile(srcPath, origPath);
+        }
       }
     }
 
@@ -115,6 +129,19 @@ async function build() {
           </body>
         `);
       }
+      
+      // Автоматическая подмена <img> на <picture> с webp (только для локальных изображений из папки img/)
+      // Игнорируем теги, которые уже находятся внутри <picture>
+      content = content.replace(
+        /<picture[^>]*>[\s\S]*?<\/picture>|(<img([^>]*)src=["'](img\/[^"']+\.(png|jpg|jpeg))["']([^>]*)>)/gi,
+        (match, imgTag, attr1, src, ext, attr2) => {
+          if (imgTag) {
+            const webpSrc = src.replace(/\.(png|jpg|jpeg)$/i, ".webp");
+            return `<picture><source srcset="${webpSrc}" type="image/webp">${imgTag}</picture>`;
+          }
+          return match;
+        }
+      );
 
       const minified = await minifyHtml(content, {
         collapseWhitespace: true,
