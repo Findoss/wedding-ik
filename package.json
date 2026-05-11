@@ -1,0 +1,14 @@
+{
+  "name": "wedding-invite",
+  "version": "1.0.0",
+  "description": "Свадебный лендинг",
+  "scripts": {
+    "build": "bun run build.ts",
+    "dev": "bun --hot build.ts --watch"
+  },
+  "devDependencies": {
+    "clean-css": "^5.3.3",
+    "html-minifier-terser": "^7.2.0",
+    "sharp": "^0.33.2"
+  }
+}
