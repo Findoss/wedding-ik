@@ -6,39 +6,128 @@
 }
 
 :root {
-  /* Цветовая палитра (Theme Colors) */
-  --bg-main: #ffffff; /* Светло-бежевый (фон) */
-  --bg-soft: #b2967d; /* Приглушенный золотисто-бежевый */
-
-  --text-main: #4a342a; /* Темный кофейный (основной текст) */
-  --text-muted: #7d5a44; /* Терракотово-коричневый (второстепенный) */
-  --text-heading: #4a342a; /* Темный кофейный (заголовки) */
+  /* ===== Цветовая палитра ===== */
+  --bg-main: #ffffff;
+  --bg-soft: #b2967d;
+  --text-main: #4a342a;
+  --text-muted: #7d5a44;
+  --text-heading: #4a342a;
   --text-dark: #4a342a;
-
-  --accent-color: #7d5a44; /* Акцентный коричневый */
-  --accent-hover: #4a342a; /* Темный акцент при наведении */
-
+  --accent-color: #7d5a44;
+  --accent-hover: #4a342a;
   --white: #ffffff;
   --overlay-bg: rgba(255, 255, 255, 0.7);
+  --toast-success: #27ae60;
+  --toast-success-border: #1e8449;
+  --toast-error: #e74c3c;
+  --toast-error-border: #c0392b;
+  --error-bg: #e74c3c;
+  --error-border: #c0392b;
+  --error-accent: #f39c12;
 
-  /* Шрифты (Typography) */
+  /* ===== Шрифты ===== */
   --font-primary: "Spectral", "Georgia", serif;
-  --font-heading: "AlexandraScript"; /* рукописный шрифт */
+  --font-heading: "AlexandraScript";
   --font-sans: "Inter", sans-serif;
 
-  /* Размеры текста (Text Sizes) */
-  --text-sm: 1rem; /* 16px - Base text, descriptions, mobile */
-  --text-md: 1.25rem; /* 20px - Subtitles, cards, standard text */
-  --text-lg: 2.5rem; /* Standard title size */
-  --text-xl: 4rem; /* Main hero title size */
+  /* ===== Размеры текста (Desktop) ===== */
+  --text-sm: 1rem;
+  --text-md: 1.25rem;
+  --text-lg: 2.5rem;
+  --text-xl: 4rem;
+  --text-section-title: 5rem;
+  --text-hero-title: 7rem;
+  --text-calendar-title: 4rem;
+  --text-flap-top: 5rem;
+  --text-final: 5.5rem;
+  --text-event-time: 2rem;
+  --text-detail-marker: 1.2rem;
 
-  /* Отступы (Spacing) */
+  /* ===== Отступы ===== */
   --space-xs: 0.5rem;
   --space-sm: 1rem;
   --space-md: 1.5rem;
   --space-lg: 2rem;
   --space-xl: 2.5rem;
   --space-2xl: 3rem;
+
+  /* ===== Скругления ===== */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 15px;
+  --radius-pill: 30px;
+  --radius-round: 50%;
+
+  /* ===== Тени ===== */
+  --shadow-sm: 0 4px 10px rgba(0, 0, 0, 0.15);
+  --shadow-md: 0 10px 20px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 10px 30px rgba(0, 0, 0, 0.15);
+  --shadow-card: 0 4px 15px rgba(0, 0, 0, 0.05);
+  --shadow-drop: 0 10px 15px rgba(0, 0, 0, 0.1);
+  --shadow-flap: 0 10px 20px rgba(0, 0, 0, 0.5);
+  --shadow-mark: 0 4px 6px rgba(0, 0, 0, 0.5);
+
+  /* ===== Переходы ===== */
+  --transition-fast: 0.3s ease;
+  --transition-med: 0.5s ease;
+
+  /* ===== Компоненты ===== */
+  --mark-size: 250px;
+  --timing-circle: 180px;
+  --timing-border: 4px;
+  --gallery-row-h: 250px;
+  --content-max-w: 800px;
+  --map-max-w: 1000px;
+  --calendar-max-w: 450px;
+  --calendar-gap: 8px;
+  --color-strip-w: 200px;
+  --color-strip-h: 60px;
+}
+
+/* ===== Tablet / Smartphone (≤ 768px) ===== */
+@media (max-width: 768px) {
+  :root {
+    --text-xl: 3rem;
+    --text-lg: 1.8rem;
+    --text-md: 1.125rem;
+    --text-section-title: 3.5rem;
+    --text-hero-title: 5rem;
+    --text-calendar-title: 3rem;
+    --text-flap-top: 3.5rem;
+    --text-final: 3rem;
+    --text-event-time: 1.5rem;
+    --mark-size: 200px;
+    --timing-circle: 80px;
+    --timing-border: 2px;
+    --gallery-row-h: 180px;
+    --calendar-max-w: 360px;
+    --color-strip-w: 100%;
+  }
+}
+
+/* ===== Small Phone (≤ 480px) ===== */
+@media (max-width: 480px) {
+  :root {
+    --text-xl: 2.2rem;
+    --text-lg: 1.4rem;
+    --text-md: 1rem;
+    --text-sm: 0.9rem;
+    --text-section-title: 2.8rem;
+    --text-hero-title: 3.5rem;
+    --text-calendar-title: 2.5rem;
+    --text-flap-top: 2.5rem;
+    --text-final: 2.2rem;
+    --text-event-time: 1.2rem;
+    --space-lg: 1.5rem;
+    --space-xl: 2rem;
+    --space-2xl: 2.5rem;
+    --mark-size: 160px;
+    --timing-circle: 60px;
+    --gallery-row-h: 140px;
+    --calendar-max-w: 300px;
+    --calendar-gap: 4px;
+    --color-strip-h: 50px;
+  }
 }
 
 * {
@@ -114,23 +203,23 @@ body.no-scroll::before {
 
 .section-title {
   font-family: var(--font-heading);
-  font-size: 5rem; /* Increased handwritten size */
+  font-size: var(--text-section-title);
   font-weight: normal;
-  line-height: 0.8; /* Reduced line height for script font */
+  line-height: 0.8;
   margin-bottom: var(--space-sm);
   color: var(--accent-color);
-  text-transform: none; /* Handwritten fonts look bad in all-caps */
+  text-transform: none;
   z-index: 2;
   text-align: center;
 }
 
 .content-box {
-  max-width: 800px;
+  max-width: var(--content-max-w);
   font-size: var(--text-md);
   color: var(--text-heading);
   background: transparent;
   z-index: 2;
-  text-align: left; /* Align regular text to the left */
+  text-align: left;
 }
 
 /* Кнопки */
@@ -141,18 +230,18 @@ body.no-scroll::before {
   background-color: var(--accent-color);
   color: var(--white);
   padding: var(--space-sm) var(--space-lg);
-  border-radius: 30px;
+  border-radius: var(--radius-pill);
   text-decoration: none;
-  font-family: var(--font-primary); /* Changed to serif font from theme */
+  font-family: var(--font-primary);
   font-weight: 700;
   font-size: var(--text-md);
   margin-top: var(--space-md);
   border: none;
   cursor: pointer;
   transition:
-    background-color 0.3s,
-    transform 0.3s;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    background-color var(--transition-fast),
+    transform var(--transition-fast);
+  box-shadow: var(--shadow-sm);
 }
 
 .btn-primary:hover {
@@ -201,7 +290,7 @@ body.no-scroll::before {
   position: relative;
   z-index: 2;
   font-family: var(--font-heading);
-  font-size: 7rem; /* Increased handwritten size */
+  font-size: var(--text-hero-title);
   font-weight: normal;
   line-height: 0.8;
   color: var(--accent-color);
@@ -212,7 +301,6 @@ body.no-scroll::before {
 
 .invitation-card .hero-subtitle,
 .invitation-card {
-  position: relative;
   z-index: 2;
   font-size: var(--text-lg);
   font-weight: bold;
@@ -222,6 +310,7 @@ body.no-scroll::before {
 
 .invitation-text {
   font-weight: 400;
+  z-index: 2;
 }
 
 /* Подложка для скрытия контента карточки до открытия */
@@ -248,7 +337,7 @@ body.no-scroll::before {
 .leaf img {
   width: 100%;
   height: auto;
-  filter: drop-shadow(0 10px 15px rgba(0, 0, 0, 0.1));
+  filter: drop-shadow(var(--shadow-drop));
 }
 
 .leaf-lt {
@@ -286,15 +375,13 @@ body.no-scroll::before {
   height: 100%;
   object-fit: cover;
   object-position: bottom;
-  filter: drop-shadow(
-    0 10px 20px rgba(0, 0, 0, 0.5)
-  ); /* Тень для реализма, работает с прозрачным PNG */
+  filter: drop-shadow(var(--shadow-flap));
 }
 
 .flap-text-top {
   position: relative;
   z-index: 1;
-  font-size: 5rem;
+  font-size: var(--text-flap-top);
   font-family: var(--font-heading);
   line-height: 0.8;
   font-weight: normal;
@@ -361,10 +448,10 @@ body.no-scroll::before {
 }
 
 .mark-btn {
-  width: 250px;
-  height: 250px;
+  width: var(--mark-size);
+  height: var(--mark-size);
   object-fit: contain;
-  filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.5));
+  filter: drop-shadow(var(--shadow-mark));
 }
 
 /* Стили на случай отсутствия картинки mark.png */
@@ -372,12 +459,12 @@ body.no-scroll::before {
   width: 160px;
   height: 160px;
   background-color: var(--error-bg);
-  border-radius: 50%;
+  border-radius: var(--radius-round);
   border: 4px solid var(--error-border);
   display: flex;
   justify-content: center;
   align-items: center;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+  box-shadow: var(--shadow-sm);
 }
 
 .fallback-mark::after {
@@ -385,7 +472,7 @@ body.no-scroll::before {
   width: 120px;
   height: 120px;
   border: 4px dashed var(--error-accent);
-  border-radius: 50%;
+  border-radius: var(--radius-round);
 }
 
 .bg-section {
@@ -400,7 +487,7 @@ body.no-scroll::before {
 .calendar-container {
   background: transparent;
   padding: var(--space-md);
-  max-width: 450px;
+  max-width: var(--calendar-max-w);
   width: 100%;
   margin: 0 auto; /* Center the calendar widget */
 }
@@ -410,7 +497,7 @@ body.no-scroll::before {
 
 .calendar-title {
   font-family: var(--font-heading);
-  font-size: 4rem; /* Increased handwritten size */
+  font-size: var(--text-calendar-title);
   font-weight: normal;
   line-height: 0.8;
   color: var(--accent-color);
@@ -421,20 +508,20 @@ body.no-scroll::before {
 .calendar-grid {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
-  gap: 8px;
+  gap: var(--calendar-gap);
   text-align: center;
 }
 
 .day-name {
   font-weight: 700;
   color: var(--accent-hover);
-  margin-bottom: 10px;
+  margin-bottom: var(--space-xs);
   font-size: var(--text-sm);
 }
 
 .day {
   font-size: var(--text-md);
-  padding: 8px 0;
+  padding: var(--calendar-gap) 0;
   position: relative;
   color: var(--text-heading);
   display: flex;
@@ -480,9 +567,9 @@ body.no-scroll::before {
   align-items: center;
   background: var(--overlay-bg);
   padding: var(--space-xs);
-  border-radius: 15px;
+  border-radius: var(--radius-lg);
   min-width: 80px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  box-shadow: var(--shadow-card);
   border: 2px solid var(--white);
 }
 
@@ -494,7 +581,7 @@ body.no-scroll::before {
 .gallery-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  grid-auto-rows: 250px;
+  grid-auto-rows: var(--gallery-row-h);
   gap: var(--space-sm);
   max-width: 1200px;
   width: 100%;
@@ -505,8 +592,8 @@ body.no-scroll::before {
 .gallery-item {
   position: relative;
   overflow: hidden;
-  border-radius: 15px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
   border: 1px solid var(--white);
 }
 
@@ -515,7 +602,7 @@ body.no-scroll::before {
   height: 100%;
   object-fit: cover;
   display: block;
-  transition: transform 0.5s ease;
+  transition: transform var(--transition-med);
 }
 
 .gallery-item:hover img {
@@ -539,13 +626,6 @@ body.no-scroll::before {
   display: none;
 }
 
-@media (max-width: 768px) {
-  .gallery-grid {
-    grid-template-columns: repeat(2, 1fr);
-    grid-auto-rows: 180px;
-  }
-}
-
 .countdown-value {
   font-size: var(--text-xl);
   font-weight: 700;
@@ -567,11 +647,11 @@ body.no-scroll::before {
   width: 100%;
   max-width: 600px;
   height: auto;
-  border-radius: 15px;
+  border-radius: var(--radius-lg);
   margin-top: var(--space-lg);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-  border: 4px solid var(--white);
-  transition: transform 0.3s;
+  box-shadow: var(--shadow-lg);
+  border: var(--timing-border) solid var(--white);
+  transition: transform var(--transition-fast);
 }
 
 .location-img:hover {
@@ -588,12 +668,12 @@ body.no-scroll::before {
 
 .map {
   width: 100%;
-  max-width: 1000px;
+  max-width: var(--map-max-w);
   margin: var(--space-lg) auto 0 auto;
-  border-radius: 15px;
+  border-radius: var(--radius-lg);
   overflow: hidden;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-  border: 4px solid var(--white);
+  box-shadow: var(--shadow-lg);
+  border: var(--timing-border) solid var(--white);
 }
 
 .map iframe {
@@ -648,19 +728,19 @@ body.no-scroll::before {
 }
 
 .timing-img-circle {
-  width: 180px;
-  height: 180px;
-  border-radius: 50%;
+  width: var(--timing-circle);
+  height: var(--timing-circle);
+  border-radius: var(--radius-round);
   object-fit: cover;
-  border: 4px solid var(--white);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  border: var(--timing-border) solid var(--white);
+  box-shadow: var(--shadow-md);
 }
 
 .timeline-point {
   width: 12px;
   height: 12px;
   background-color: var(--text-dark);
-  border-radius: 50%;
+  border-radius: var(--radius-round);
   position: relative;
   z-index: 4;
 }
@@ -672,7 +752,7 @@ body.no-scroll::before {
 .event-time {
   font-family: var(--font-primary);
   font-weight: 400;
-  font-size: 2rem; /* Clear size for primary font */
+  font-size: var(--text-event-time);
   color: var(--accent-color);
   margin-bottom: 2px;
 }
@@ -707,7 +787,7 @@ body.no-scroll::before {
   position: absolute;
   left: 0;
   color: var(--accent-color);
-  font-size: 1.2rem;
+  font-size: var(--text-detail-marker);
 }
 
 .palette-container {
@@ -719,17 +799,17 @@ body.no-scroll::before {
 }
 
 .color-strip {
-  width: 200px;
-  height: 60px;
-  border-radius: 30px;
+  width: var(--color-strip-w);
+  height: var(--color-strip-h);
+  border-radius: var(--radius-pill);
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: var(--text-md);
   font-weight: 600;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--shadow-card);
   border: 2px solid var(--white);
-  transition: transform 0.3s;
+  transition: transform var(--transition-fast);
   cursor: default;
 }
 
@@ -835,7 +915,7 @@ body.no-scroll::before {
 
 .final-text {
   font-family: var(--font-heading);
-  font-size: 5.5rem;
+  font-size: var(--text-final);
   line-height: 0.8;
   max-width: 950px;
   margin: 0 auto;
@@ -844,17 +924,11 @@ body.no-scroll::before {
   z-index: 2;
 }
 
+/* ========================================================
+   Адаптивность — компоненты (≤ 768px)
+   Размеры текста/компонентов уже адаптированы через :root
+   ======================================================== */
 @media (max-width: 768px) {
-  :root {
-    --text-xl: 3rem;
-    --text-lg: 1.8rem;
-    --text-md: 1.125rem;
-  }
-  .mark-btn {
-    width: 200px;
-    height: 200px;
-  }
-
   .wedding-ring {
     top: -65%;
     left: -70%;
@@ -862,12 +936,6 @@ body.no-scroll::before {
 
   .flap-text-bottom {
     padding-top: 35vh;
-  }
-
-  /* Адаптивность для тайминга */
-  .timeline-line,
-  .timeline-heart {
-    left: 50%;
   }
 
   .timeline-item {
@@ -880,26 +948,28 @@ body.no-scroll::before {
     padding: 0;
   }
 
-  .timing-img-circle {
-    width: 80px;
-    height: 80px;
-    border-width: 2px;
+  .wedding-ring {
+    left: -65%;
+  }
+
+  .gallery-grid {
+    grid-template-columns: repeat(2, 1fr);
   }
 
   .item-1 {
-    grid-column: span 4;
+    grid-column: span 2;
     grid-row: span 2;
   }
   .item-2 {
-    grid-column: span 2;
+    grid-column: span 1;
     grid-row: span 2;
   }
   .item-3 {
-    grid-column: span 2;
+    grid-column: span 1;
     grid-row: span 1;
   }
   .item-4 {
-    grid-column: span 2;
+    grid-column: span 1;
     grid-row: span 1;
     display: block;
   }
@@ -909,7 +979,7 @@ body.no-scroll::before {
   }
 
   .event-time {
-    font-size: var(--text-lg);
+    font-size: var(--text-event-time);
   }
 
   .event-title {
@@ -922,8 +992,6 @@ body.no-scroll::before {
   }
 
   .final-text {
-    font-size: 3rem;
-    line-height: 0.8;
     padding: 0 var(--space-sm);
   }
 
@@ -932,12 +1000,7 @@ body.no-scroll::before {
   }
 
   .color-strip {
-    width: 100%;
     max-width: 240px;
-  }
-
-  .map iframe {
-    width: 100% !important;
   }
 
   .toast-notification {
@@ -954,12 +1017,95 @@ body.no-scroll::before {
   }
 }
 
-/* Уведомления (Toasts) */
+/* ========================================================
+   Адаптивность — маленькие телефоны (≤ 480px)
+   ======================================================== */
+@media (max-width: 480px) {
+  .section {
+    padding: var(--space-sm) var(--space-md);
+  }
+
+  .invitation-card {
+    padding: var(--space-lg) var(--space-sm);
+  }
+
+  .flap-text-top {
+    padding-bottom: 25vh;
+  }
+
+  .flap-text-bottom {
+    padding-top: 38vh;
+    max-width: 90%;
+  }
+
+  .wedding-ring {
+    top: -95%;
+    left: -74%;
+  }
+
+  .countdown-container {
+    flex-wrap: nowrap;
+    gap: var(--space-xs);
+  }
+
+  .countdown-item {
+    min-width: 60px;
+    display: flex;
+    background: none;
+    padding: 0;
+    box-shadow: none;
+    border: 2px solid var(--white);
+  }
+
+  .timeline-item {
+    gap: var(--space-xs);
+  }
+
+  .gallery-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .item-1,
+  .item-4,
+  .item-2,
+  .item-3 {
+    grid-column: span 1;
+    grid-row: span 2;
+  }
+
+  .calendar-container {
+    padding: var(--space-sm);
+  }
+
+  .details-list {
+    max-width: 100%;
+  }
+
+  .map iframe {
+    width: 100% !important;
+  }
+
+  .final-section {
+    padding: 60px var(--space-sm);
+    margin-top: 40px;
+  }
+
+  .color-strip {
+    max-width: 100%;
+  }
+
+  .radio-group,
+  .checkbox-group {
+    gap: var(--space-sm);
+  }
+}
+
+/* ===== Уведомления (Toasts) ===== */
 .toast-notification {
   position: fixed;
   top: 30px;
   right: 30px;
-  padding: 15px 30px;
+  padding: var(--space-md) var(--space-2xl);
   border-radius: var(--radius-md);
   color: var(--white);
   font-family: var(--font-sans);
@@ -979,11 +1125,11 @@ body.no-scroll::before {
 }
 
 .toast-success {
-  background: #27ae60;
-  border-left: 5px solid #1e8449;
+  background: var(--toast-success);
+  border-left: 5px solid var(--toast-success-border);
 }
 
 .toast-error {
-  background: #e74c3c;
-  border-left: 5px solid #c0392b;
+  background: var(--toast-error);
+  border-left: 5px solid var(--toast-error-border);
 }

@@ -10,7 +10,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+    box-shadow: var(--shadow-lg);
     z-index: 1000;
     border: 2px solid rgba(255, 255, 255, 0.5);
     transition: transform 0.5s, opacity 0.5s, box-shadow 0.3s;
@@ -56,5 +56,17 @@
     .custom-audio-player .play-btn svg {
         width: 36px;
         height: 36px;
+    }
+}
+
+@media (max-width: 480px) {
+    .custom-audio-player {
+        bottom: var(--space-sm);
+        right: var(--space-sm);
+        padding: var(--space-xs);
+    }
+    .custom-audio-player .play-btn svg {
+        width: 28px;
+        height: 28px;
     }
 }
