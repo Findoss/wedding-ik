@@ -91,7 +91,8 @@ async function build() {
       ...files.filter(f => f.endsWith(".min.js")),
       ...files.filter(f => f.endsWith(".mp3")),
       ...files.filter(f => f.endsWith(".otf")),
-      ...files.filter(f => f.endsWith(".ttf"))
+      ...files.filter(f => f.endsWith(".ttf")),
+      ...files.filter(f => f === "CNAME")
     ];
     for (const file of copyTasks) {
       await fs.copyFile(file, path.join(OUT_DIR, file));
