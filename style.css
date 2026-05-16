@@ -1003,18 +1003,7 @@ body.no-scroll::before {
     max-width: 240px;
   }
 
-  .toast-notification {
-    top: auto;
-    bottom: 20px;
-    right: 20px;
-    left: 20px;
-    max-width: none;
-    transform: translateY(100px);
-  }
 
-  .toast-notification.show {
-    transform: translateY(0);
-  }
 }
 
 /* ========================================================
@@ -1103,25 +1092,29 @@ body.no-scroll::before {
 /* ===== Уведомления (Toasts) ===== */
 .toast-notification {
   position: fixed;
-  top: 30px;
-  right: 30px;
-  padding: var(--space-md) var(--space-2xl);
+  top: 20px;
+  left: 50%;
+  transform: translate(-50%, -20px);
+  padding: var(--space-sm) var(--space-xl);
   border-radius: var(--radius-md);
   color: var(--white);
   font-family: var(--font-sans);
   font-weight: 600;
-  z-index: 9999;
-  box-shadow: var(--shadow-md);
-  transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  z-index: 10000;
+  box-shadow: var(--shadow-lg);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   opacity: 0;
-  transform: translateX(100px);
-  max-width: 320px;
+  width: auto;
+  min-width: 280px;
+  max-width: 90vw;
   text-align: center;
+  pointer-events: none;
 }
 
 .toast-notification.show {
   opacity: 1;
-  transform: translateX(0);
+  transform: translate(-50%, 0);
+  pointer-events: auto;
 }
 
 .toast-success {
